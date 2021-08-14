@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nama1 = prompt('Masukan Nama Pengirim')
+        document.write('Nama Pengirim : ', nama1, '<br>')
+        var nama2 = prompt('Masukan Nama Penerima')
+        document.write('Nama Penerima : ', nama2, '<br>')
+        var alamat = prompt('Masukan Alamat Penerima')
+        document.write('Alamat Penerima: ', alamat, '<br>')
+        var jenis_barang = prompt('Masukan Jenis Barang')
+        document.write('Jenis Barang :', jenis_barang, '<br>')
+        var jarak_pengiriman = prompt('Jarak Tempuh Pengiriman')
+        document.write('Jarak Tempuh Pengiriman :', jarak_pengiriman, '<br>')
+        var berat_barang = prompt('Berat Barang')
+        document.write('Berat Barang :', berat_barang, '<br>')
+        var biaya1 = 10000*jarak_pengiriman
+        var biaya2 = 5000*berat_barang
+        var biaya_pengiriman = biaya1+biaya2
+        document.write('Biaya Pengiriman :', biaya_pengiriman, '<br>')
+
+        if(biaya1 >= 50000 && biaya2>= 100000)
+        var hasil1 = 10/100*biaya1
+        var hasil2 = 5/100*biaya2
+        document.write('Potongan Harga Jarak :', hasil1, '<br>')
+        document.write('Potongan Harga Berat :', hasil2, '<br>')
+        
+        var hasil3 = biaya1-hasil1
+        document.write('=', hasil3, '<br>')
+        var hasil4 = biaya2-hasil2
+        document.write('=', hasil4, '<br>')
+        var total = hasil3+hasil4
+        document.write('Harga Total :', total, '<br>')
+
+    
+
+    </script>
+</body>
+</html>
