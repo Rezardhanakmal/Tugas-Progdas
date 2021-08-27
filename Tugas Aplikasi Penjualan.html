@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .jumbotron{
+            height: 400px;
+            background-image: url(https://www.nicepng.com/png/detail/134-1343236_peacock-bass-fish-peacock-bass-fish-png.png);
+            background-size: cover;
+            background-position-y: -625px;
+        }
+
+        .judullist{
+            height: 50px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Predator Fish</h1>
+          <p class="lead">All about predator fish</p>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="judullist bg-dark rounded text-center text-white pt-2">List Items</div>
+
+                <div class="listkeranjang" id="listkeranjang">
+                    
+                </div>
+
+                  <table width="100%">
+                      <tbody>
+                          <tr>
+                              <td>Discount (5%)</td>
+                              <td>Rp. <span id="discount"></span></td>
+                          </tr>
+                          <tr>
+                            <td>PPN (10%)</td>
+                            <td>Rp. <span id="pajak"></span></td>
+                        </tr>
+                        <tr class="bg-dark text-white">
+                            <td>Total Bayar (10%)</td>
+                            <td>Rp. <span id="totalbayar"></span></td>
+                        </tr>
+                      </tbody>
+                  </table>
+               
+
+                  <button type="button" class="btn btn-primary mt-3 btn-block">Bayar</button>
+            </div>
+    
+            <div class="col-8" id="listproduk">
+            
+                
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var namabarang = ['Peacock Bass Monoculus 30cm', 'Peacock Bass Orinoco 27cm', 'Peacock Bass Temensis 20cm', 'Peacock Bass Pinima 25cm', 'Peacock Bass Kelberi 32cm', 'Peacock Bass Xingu 28cm', 'Peacock Bass Fogo 6cm', 'Peacock Bass Azul 26cm', 'Arwana Super Red 10cm', 'Arwana Golden Red 10cm', 'Arapaima 10cm', 'Channa Barca 30cm']
+        var hargabarang = [800000, 1000000, 1500000, 850000, 1200000, 1300000, 10000000, 1000000, 2500000, 600000, 1000000, 30000000]
+        var gambarbarang = [
+            "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2021/7/16/04b92607-4f8f-40c1-b42e-3f471e7b5095.jpg.webp?ect=4g", "https://images.tokopedia.net/img/cache/700/VqbcmM/2020/9/16/f5a918d5-e3d7-4177-956d-38f247732633.jpg", "https://cf.shopee.co.id/file/3aceca6db47ae8c76f27de2c72ed92c5", "https://cf.shopee.co.id/file/107d3c10383b236a6d5255fc1458a42d", "https://cf.shopee.co.id/file/b469a7945668a457da6ea8d018b7727d", "https://images.tokopedia.net/img/cache/700/VqbcmM/2020/7/9/cf38b524-d2a2-4f3a-8dda-8f63d92a0a8c.jpg", "https://4.bp.blogspot.com/-1Py3w_-2Ep8/WVfSO8gNgzI/AAAAAAAAAIQ/at7b-33RHp09fWzf9M6xGr8UwP7Q116EACLcBGAs/s1600/1681987.jpg", "https://i.ytimg.com/vi/U7mYU-PXe2E/hqdefault.jpg", "http://www.shelookred.com/imgs/maskot_1.jpg", "https://1.bp.blogspot.com/-2IqfnULCvUc/WGChky6CuOI/AAAAAAAAB5o/XRx--c850H0fiQZA-Ytp9rTdyabGTuGxQCLcB/s640/arwanablack.jpg", "https://i.pinimg.com/originals/9d/06/e6/9d06e6ac8bbd4fa8154220b0f9ee6855.jpg", "https://www.99.co/blog/indonesia/wp-content/uploads/2020/11/2-ikanesia.jpg"
+            ]
+
+        var listproduk = document.getElementById('listproduk')
+        var listkeranjang = document.getElementById('listkeranjang')
+
+        var tampilandiscount = document.getElementById('discount')
+        var tampilanpajak = document.getElementById('pajak')
+        var tampilantotalbayar = document.getElementById('totalbayar')
+
+        var namabarang_keranjang = []
+        var hargabarang_keranjang = []
+
+        function showlistproduk() {
+            listproduk.innerHTML = ''
+            for (let i = 0; i < namabarang.length; i++) {
+                listproduk.innerHTML += '<div class="card float-left mr-3 mb-3" style="width: 15rem;">'+
+                    '<img src="'+gambarbarang[i]+'"class="card-img-top" alt="...">'+
+                    '<div class="card-body">'+
+                    '<h5 class="card-title">'+namabarang[i]+'</h5>'+
+                    '<p class="card-text">Rp. '+hargabarang[i]+'</p>'+
+                    '<a href="#" class="btn btn-primary" onclick="addlistitem('+i+')">Beli</a>'+
+                 '</div>'+
+            '</div>'
+            
+            }
+        }
+
+        showlistproduk()
+
+
+        function addlistitem(id) {
+           namabarang_keranjang.push(namabarang[id])
+           hargabarang_keranjang.push(hargabarang[id])
+
+           showlistkeranjang()
+
+        }
+
+        function showlistkeranjang() {
+            listkeranjang.innerHTML=''
+
+            var discount = 0
+            var pajak = 0
+            var hargatotal = 0
+            var totalbayar = 0
+            for (let i = 0; i < namabarang_keranjang.length; i++) {
+                listkeranjang.innerHTML += '<div class="card mt-3 mb-3" style="width: 18rem;">'+
+                    '<div class="card-body">'+
+                    '<h5 class="card-title">'+namabarang_keranjang[i]+'</h5>'+
+                      '<p class="card-text">Rp. '+hargabarang_keranjang[i]+'</p>'+
+                      '<p>Qty : 1</p>'+
+                      '<a href="#" class="btn btn-danger float-right" onclick="deleteitem('+i+')">Hapus</a>'+
+                '</div>'+
+                '</div>'
+
+                hargatotal = hargabarang_keranjang[i]+hargatotal
+
+                if (totalbayar>1000000) {
+                    discount = totalbayar*0.05
+                }else{
+                    discount = 0
+                }
+                totalbayar = hargatotal-discount-pajak
+
+                pajak = totalbayar*0.1
+
+                var totalbelanja = totalbayar+pajak
+                tampilanpajak.innerHTML = pajak
+                tampilandiscount.innerHTML = discount
+                tampilantotalbayar.innerHTML = totalbelanja
+                
+            }
+        }
+
+
+        function deleteitem(id) {
+            namabarang_keranjang.splice(id,1)
+            hargabarang_keranjang.splice(id,1)
+
+            showlistkeranjang()
+        }
+
+
+
+    </script>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
